@@ -25,24 +25,24 @@ exports.template = function(grunt, init, done) {
 
   init.process({}, [
     // Prompt for these values.
-    {
-      name: 'dom',
-      message: 'Is the DOM involved in ANY way?',
-      default: 'Y/n',
-      warning: 'Yes: QUnit unit tests + JSHint "browser" globals. No: Nodeunit unit tests.'
-    },
-    {
-      name: 'min_concat',
-      message: 'Will files be concatenated or minified?',
-      default: 'Y/n',
-      warning: 'Yes: min + concat tasks. No: nothing to see here.'
-    },
-    {
-      name: 'package_json',
-      message: 'Will you have a package.json file?',
-      default: 'Y/n',
-      warning: 'This changes how filenames are determined and banners are generated.'
-    }
+    // {
+    //   name: 'dom',
+    //   message: 'Is the DOM involved in ANY way?',
+    //   default: 'Y/n',
+    //   warning: 'Yes: QUnit unit tests + JSHint "browser" globals. No: Nodeunit unit tests.'
+    // },
+    // {
+    //   name: 'min_concat',
+    //   message: 'Will files be concatenated or minified?',
+    //   default: 'Y/n',
+    //   warning: 'Yes: min + concat tasks. No: nothing to see here.'
+    // },
+    // {
+    //   name: 'package_json',
+    //   message: 'Will you have a package.json file?',
+    //   default: 'Y/n',
+    //   warning: 'This changes how filenames are determined and banners are generated.'
+    // }
   ], function(err, props) {
     props.dom = /y/i.test(props.dom);
     props.min_concat = /y/i.test(props.min_concat);
@@ -76,30 +76,30 @@ exports.template = function(grunt, init, done) {
 
 
     // If is package_json true, generate package.json
-    if (props.package_json) {
-      var devDependencies = {
-        'grunt': '~0.4.5',
-        'grunt-contrib-jshint': '~0.10.0',
-        'grunt-contrib-watch': '~0.6.1'
-      };
+    // if (props.package_json) {
+    //   var devDependencies = {
+    //     'grunt': '~0.4.5',
+    //     'grunt-contrib-jshint': '~0.10.0',
+    //     'grunt-contrib-watch': '~0.6.1'
+    //   };
 
-      if (props.dom) {
-        devDependencies['grunt-contrib-qunit'] = '~0.5.2';
-      } else {
-        devDependencies['grunt-contrib-nodeunit'] = '~0.4.1';
-      }
+    //   if (props.dom) {
+    //     devDependencies['grunt-contrib-qunit'] = '~0.5.2';
+    //   } else {
+    //     devDependencies['grunt-contrib-nodeunit'] = '~0.4.1';
+    //   }
 
-      if (props.min_concat) {
-        devDependencies['grunt-contrib-concat'] = '~0.4.0';
-        devDependencies['grunt-contrib-uglify'] = '~0.5.0';
-      }
+    //   if (props.min_concat) {
+    //     devDependencies['grunt-contrib-concat'] = '~0.4.0';
+    //     devDependencies['grunt-contrib-uglify'] = '~0.5.0';
+    //   }
 
-      // Generate package.json file, used by npm and grunt.
-      init.writePackageJSON('package.json', {
-        node_version: '>= 0.10.0',
-        devDependencies: devDependencies
-      });
-    }
+    //   // Generate package.json file, used by npm and grunt.
+    //   init.writePackageJSON('package.json', {
+    //     node_version: '>= 0.10.0',
+    //     devDependencies: devDependencies
+    //   });
+    // }
 
     // All done!
     done();
