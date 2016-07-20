@@ -3,12 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     jshint: {
-      files: ['Gruntfile.js', 'public/*.js', 'routes/*.js'],
-      options: {
-        globals: {
-          jQuery: true
-        }
-      }
+      files: ['Gruntfile.js', 'public/scripts/*.js', 'routes/*.js']
     },
     watch: {
       files: ['**/*.js'],
@@ -24,11 +19,11 @@ module.exports = function(grunt) {
     },
     uglify: {
      my_target: {
-       options: {
-         mangle: false
-       },
+      //  options: {
+      //    mangle: false
+      //  },
        files: {
-         'dest/output.min.js': ['public/scripts/MainController.js']
+         'dest/output.min.js': ['public/scripts/*.js']
        }
      }
    }
@@ -40,6 +35,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['jshint', 'watch']);
-  grunt.registerTask('banana', ['watch']);
 
 };
