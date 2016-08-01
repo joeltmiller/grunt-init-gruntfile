@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     jshint: {
-      files: ['Gruntfile.js', 'public/scripts/*.js', 'routes/*.js']
+      files: ['Gruntfile.js', 'routes/*.js', 'client/*.js', '*.js']
     },
     watch: {
       files: ['**/*.js'],
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       main: {
         files: [
           // makes all src relative to cwd
-          {expand: true, cwd: 'node_modules', src: ['angular/**', 'bootstrap/**'], dest: 'dest/'},
+          {expand: true, cwd: 'node_modules', src: ['angular/**', 'bootstrap/**'], dest: 'public/vendor'},
         ],
       },
     },
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'dest/output.min.js': ['public/scripts/*.js']
+         'public/scripts/client.min.js': ['client/*.js']
        }
      }
    }
